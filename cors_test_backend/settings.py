@@ -25,7 +25,9 @@ SECRET_KEY = "django-insecure-snwg#ci89*9#kkwf4j%@ieg)%=s9pj4=j8etmr45i7s17@%uw!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "pynoodler.pythonanywhere.com",
+]
 
 
 # Application definition
