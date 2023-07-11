@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "cookies",
+    "registration",
     "rest_framework",
     "corsheaders",
 ]
@@ -147,4 +148,4 @@ CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS[:]
 CORS_ALLOW_CREDENTIALS = True
 
 LOGIN_REDIRECT_URL = "https://james-loewen.github.io/cors_test_frontend/"
-LOGOUT_REDIRECT_URL = "https://james-loewen.github.io/cors_test_frontend/"
+# LOGOUT_REDIRECT_URL = "https://james-loewen.github.io/cors_test_frontend/"

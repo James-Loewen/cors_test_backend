@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 
 from cookies import views as cookie_views
+from registration import views as reg_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("sample/", cookie_views.MyView.as_view(), name="sample"),
     path("get_user/", cookie_views.GetUser.as_view(), name="get_user"),
     path("get_csrf/", cookie_views.GetCSRFToken.as_view(), name="get_csrf"),
-    path("accounts/", include("django.contrib.auth.urls")),
+    # path("accounts/", include("django.contrib.auth.urls")),
+    path("my_login/", reg_views.MyLoginView.as_view(), name="my_login"),
+    path("my_logout/", reg_views.MyLogoutView.as_view(), name="my_logout"),
+    path("register/", reg_views.RegisterUser.as_view(), name="register"),
 ]
