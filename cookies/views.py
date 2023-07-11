@@ -5,20 +5,20 @@ from rest_framework.response import Response
 
 
 class MyView(APIView):
-    def get(self, request):
-        return Response({'message': 'Oh boy, a view!'})
+    def post(self, request):
+        return Response({"message": "Successful POST request!"})
 
 
 class GetUser(APIView):
     def get(self, request):
         if request.user.is_authenticated:
-            return Response({'user': request.user.username})
+            return Response({"user": request.user.username})
         else:
-            return Response({'user': 'anonymous'})
+            return Response({"user": "anonymous"})
 
 
 class GetCSRFToken(APIView):
     def get(self, request):
         token = get_token(request)
         print(token)
-        return Response({'token': token})
+        return Response({"token": token})
