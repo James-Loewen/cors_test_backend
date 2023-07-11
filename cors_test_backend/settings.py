@@ -145,5 +145,5 @@ CORS_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS[:]
 
 CORS_ALLOW_CREDENTIALS = True
 
-# LOGIN_REDIRECT_URL = "https://james-loewen.github.io/cors_test_frontend/"
-LOGIN_REDIRECT_URL = "http://localhost:5173/"
+LOGIN_REDIRECT_URL = "https://james-loewen.github.io/cors_test_frontend/"
+# LOGIN_REDIRECT_URL = "http://localhost:5173/"
