@@ -23,5 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("sample/", cookie_views.MyView.as_view(), name="sample"),
     path("get_user/", cookie_views.GetUser.as_view(), name="get_user"),
+    path("get_csrf/", cookie_views.GetCSRFToken.as_view(), name="get_csrf"),
     path("accounts/", include("django.contrib.auth.urls")),
 ]
