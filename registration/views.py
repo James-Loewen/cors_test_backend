@@ -40,6 +40,9 @@ class RegisterUser(APIView):
             user = User.objects.create_user(username=username, password=password)
             user.save()
 
-            return Response({"message": "User successfully created!"})
+            return Response({
+                "message": "User successfully created!",
+                "user": user.username,
+            })
         except KeyError:
             return Response({"message": "missing or invalid input"})
