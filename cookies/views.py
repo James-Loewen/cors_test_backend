@@ -12,6 +12,6 @@ class MyView(APIView):
 class GetUser(APIView):
     def get(self, request):
         if request.user.is_authenticated:
-            return Response({'current user:': request.user.username})
+            return Response({'user': request.user.username})
         else:
-            return Response({'current user:': 'anonymous'})
+            return Response({'user': 'anonymous'})

@@ -26,6 +26,7 @@ SECRET_KEY = "django-insecure-snwg#ci89*9#kkwf4j%@ieg)%=s9pj4=j8etmr45i7s17@%uw!
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "localhost",
     "pynoodler.pythonanywhere.com",
 ]
 
@@ -140,4 +141,5 @@ CORS_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS[:]
 
 CORS_ALLOW_CREDENTIALS = True
 
-LOGIN_REDIRECT_URL = "/get_user/"
+LOGIN_REDIRECT_URL = "https://james-loewen.github.io/cors_test_frontend/"
+# LOGIN_REDIRECT_URL = "http://localhost:5173/"
