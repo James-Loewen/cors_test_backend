@@ -40,6 +40,7 @@ class RegisterUser(APIView):
             user = User.objects.create_user(username=username, password=password)
             user.save()
 
+            login(request, user)
             return Response({
                 "message": "User successfully created!",
                 "user": user.username,
