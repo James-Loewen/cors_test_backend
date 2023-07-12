@@ -43,13 +43,21 @@ class MyLogoutView(APIView):
 class RegisterUser(APIView):
     def post(self, request):
         try:
+            first_name = request.data["firstName"]
+            last_name = request.data["lastName"]
             username = request.data["username"]
             password = request.data["password"]
 
-            user = User.objects.create_user(username=username, password=password)
-            user.save()
+            user = User.objects.create_user(
+                first_name=first_name,
+                last_name=last_name,
+                username=username,
+                password=password,
+            )
 
+            user.save()
             login(request, user)
+
             return Response(
                 {
                     "firstName": user.first_name,
