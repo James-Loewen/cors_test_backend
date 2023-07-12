@@ -8,6 +8,19 @@ from rest_framework import status
 from .serializers import UserSerializer
 
 
+class GetUser(APIView):
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
+        else:
+            return Response(
+                {"user": "anonymous"},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+
 class MyLoginView(APIView):
     def post(self, request):
         username = request.data.get("username", None)
