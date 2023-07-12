@@ -1,3 +1,5 @@
+#!/home/pynoodler/.virtualenvs/cors_venv/bin/python
+
 # DJANGO PROJECT SETUP
 import sys
 import os
