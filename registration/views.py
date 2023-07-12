@@ -5,8 +5,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from .serializers import UserSerializer
 
-# Create your views here.
+
 class MyLoginView(APIView):
     def post(self, request):
         username = request.data.get("username", None)
@@ -16,16 +17,12 @@ class MyLoginView(APIView):
 
         if user is not None:
             login(request, user)
-            return Response(
-                {
-                    "firstName": user.first_name,
-                    "lastName": user.last_name,
-                    "username": user.username,
-                }
-            )
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
 
         return Response(
-            {"message": "Invalid credentials"}, status=status.HTTP_401_FORBIDDEN
+            {"message": "Invalid credentials"},
+            status=status.HTTP_401_FORBIDDEN,
         )
 
 
@@ -36,37 +33,25 @@ class MyLogoutView(APIView):
             return Response({"message": "Successfully logged out!"})
 
         return Response(
-            {"message": "A user was not logged in."}, status=status.HTTP_400_BAD_REQUEST
+            {"message": "A user was not logged in."},
+            status=status.HTTP_400_BAD_REQUEST,
         )
 
 
 class RegisterUser(APIView):
     def post(self, request):
-        try:
-            first_name = request.data["firstName"]
-            last_name = request.data["lastName"]
-            username = request.data["username"]
-            password = request.data["password"]
+        serializer = UserSerializer(data=request.data)
 
-            user = User.objects.create_user(
-                first_name=first_name,
-                last_name=last_name,
-                username=username,
-                password=password,
-            )
-
-            user.save()
+        if serializer.is_valid():
+            user = serializer.save()
             login(request, user)
 
             return Response(
-                {
-                    "firstName": user.first_name,
-                    "lastName": user.last_name,
-                    "username": user.username,
-                },
+                serializer.data,
                 status=status.HTTP_201_CREATED,
             )
-        except KeyError:
+
+        else:
             return Response(
                 {"message": "missing or invalid input"},
                 status=status.HTTP_400_BAD_REQUEST,
