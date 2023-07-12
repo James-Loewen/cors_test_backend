@@ -35,7 +35,7 @@ class MyLoginView(APIView):
 
         return Response(
             {"message": "Invalid credentials"},
-            status=status.HTTP_401_FORBIDDEN,
+            status=status.HTTP_401_UNAUTHORIZED,
         )
 
 
