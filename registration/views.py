@@ -16,7 +16,9 @@ class MyLoginView(APIView):
             login(request, user)
             return Response({
                 "message": "Successfully logged in!",
-                "user": user.username,
+                "firstName": user.first_name,
+                "lastName": user.last_name,
+                "username": user.username,
             })
         
         return Response({"message": "Invalid credentials"})
@@ -43,7 +45,9 @@ class RegisterUser(APIView):
             login(request, user)
             return Response({
                 "message": "User successfully created!",
-                "user": user.username,
+                "firstName": user.first_name,
+                "lastName": user.last_name,
+                "username": user.username,
             })
         except KeyError:
             return Response({"message": "missing or invalid input"})
