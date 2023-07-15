@@ -6,7 +6,7 @@ from pathlib import Path
 
 try:
     import django
-    from django.core.exceptions import ObjectDoesNotExist, ImproperlyConfigured
+    from django.core.exceptions import ImproperlyConfigured
 except ImportError:
     sys.exit("Django is not installed.")
 
