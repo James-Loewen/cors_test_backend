@@ -13,7 +13,7 @@ except ImportError:
 # DJANGO PROJECT SETUP
 path = Path(__file__).resolve().parent.parent
 sys.path.append(path.as_posix())
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cors_test_backend.settings")
+os.environ["DJANGO_SETTINGS_MODULE"] = "cors_test_backend.settings"
 
 try:
     django.setup()
