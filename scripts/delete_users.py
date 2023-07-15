@@ -6,7 +6,6 @@ from pathlib import Path
 
 try:
     import django
-    from django.contrib.auth.models import User
     from django.core.exceptions import ObjectDoesNotExist, ImproperlyConfigured
 except ImportError:
     sys.exit("Django is not installed.")
@@ -18,12 +17,17 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cors_test_backend.settings")
 
 try:
     django.setup()
+    from django.contrib.auth.models import User
 except ImproperlyConfigured:
-    sys.exit("Django settings are incorrect or not found.")
+    sys.exit("Django settings are improperly configured.")
+except Exception as e:
+    sys.exit(f"Something went wrong. Error: {e}")
 
 # SCRIPT START
-try:
-    all_non_su = User.objects.filter(is_superuser=False)
+all_non_su = User.objects.filter(is_superuser=False)
+num_users = len(all_non_su)
+if num_users > 0:
     all_non_su.delete()
-except ObjectDoesNotExist:
+    print(f"{num_users} user(s) deleted.")
+else:
     print("No non-superuser users found.")
