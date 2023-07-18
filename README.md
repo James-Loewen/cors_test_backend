@@ -18,7 +18,7 @@ This project is a back-end web API written with Django and Django Rest Framework
 
 ## Front-End Repository
 
-For the front-end aspect of this project, please refer to the [front-end repository](#).
+For the front-end aspect of this project, please refer to the [front-end repository](https://github.com/James-Loewen/cors_test_frontend).
 
 <a name="installation"></a>
 
